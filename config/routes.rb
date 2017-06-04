@@ -55,6 +55,7 @@ Rails.application.routes.draw do
 #用户下资源和操作
   namespace :account do
     resources :orders
+    resources :products
   end
 
 end

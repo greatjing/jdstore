@@ -76,6 +76,11 @@
                <li>
                 <%= link_to("个人订单列表", account_orders_path ) %>
                </li>
+               <li class="divider"> </li>
+               <li>
+                <%= link_to("我的收藏", account_products_path ) %>
+               </li>
+               <li class="divider"> </li>
               <li>
                 <%= link_to("登出", destroy_user_session_path, method: :delete ) %>
               </li>

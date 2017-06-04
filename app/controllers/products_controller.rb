@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   before_action :validate_search_key, only: [:search_word, :join, :quit]
 
   def index
-    #@products = Product.all
+    #收藏产品展示
+    
+
     #按照是否需要分类查找区分
     if params[:category].blank?
       @products = case params[:order]

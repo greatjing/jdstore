@@ -1,0 +1,40 @@
+<div class="row product-style">
+
+<!-- 商品列表页排序的下拉类别 -->
+  <div>
+    <div class="row">
+      <div class="col-xs-12 col-md-s">
+        <h3 class="product-title">我收藏的商品</h3>
+      </div>
+      <div class="col-md-12" style="text-align:center;">
+        <hr/>
+      </div>
+    </div>
+  </div>
+
+  <!-- 商品列表 -->
+  <div class='row product-list-all'>
+  <% @products.each do |product| %>
+    <div class="col-xs-6 col-md-3">
+      <div>
+        <%= link_to product_path(product) do %>
+          <% if product.image.present? %>
+            <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
+          <% else %>
+            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="product-list-info">
+        <%= product.title %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        $<%= product.price %>
+        <br>
+        销量：<%= product.sale_quantity %>
+      </div>
+
+    </div>
+
+  <% end %>
+  </div>
+
+</div>
