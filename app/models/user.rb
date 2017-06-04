@@ -10,14 +10,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+#判断是否管理员用户
   def admin?
     is_admin
   end
 
+#判断是否已收藏
+  def is_favorite?(product)
+    relationship_products.include?(product)
+  end
+
+#收藏产品
   def join!(product)
     relationship_products << product
   end
 
+#取消收藏
   def quit!(product)
     relationship_products.delete(product)
   end

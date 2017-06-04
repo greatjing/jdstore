@@ -16,7 +16,18 @@
     <div style="height:250px;">
       <div> 已付款：<%= @product.sale_quantity %>次</div>
       <p></p>
-      <div class="product-price">¥<%= @product.price %> 元/天 </div>
+      <div class="product-price">
+        ¥<%= @product.price %> 元/天
+        <p>
+          <br>
+        <% if current_user && current_user.is_favorite?(@product) %>
+          <%= link_to("取消收藏", quit_product_path(@product), method: :post, class: "btn btn-primary" ) %>
+        <% else %>
+          <%= link_to("收藏", join_product_path(@product), method: :post, class: "btn btn-success") %>
+        <% end %>
+      </p>
+
+      </div>
       <div class="pull-right add-cart-btn">
         <% if @product.quantity.present? && @product.quantity > 0 %>
           <%= link_to("加入购物车", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-danger btn-lg") %>

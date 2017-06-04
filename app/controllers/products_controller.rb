@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :validate_search_key, only: [:search_word]
+  before_action :validate_search_key, only: [:search_word, :join, :quit]
 
   def index
     #@products = Product.all
@@ -37,12 +37,38 @@ class ProductsController < ApplicationController
     #flash[:notice] = "test"
   end
 
+#搜索关键字
   def search_word
     if @query_string.present?
       search_result = Product.ransack(@search_criteria).result(:distinct => true)
       @products = search_result.paginate(:page => params[:page], :per_page => 5)
     end
   end
+
+#收藏产品
+  def join
+    @product = Product.find(params[:id])
+    if !current_user.is_favorite?(@product)
+      current_user.join!(@product)
+      flash[:notice] = "收藏产品成功"
+    else
+      flash[:warning] = "您已收藏产品"
+    end
+    redirect_to product_path(@product)
+  end
+
+#取消收藏
+  def quit
+    @product = Product.find(params[:id])
+    if current_user.is_favorite?(@product)
+      current_user.quit!(@product)
+      flash[:notice] = "产品取消收藏"
+    else
+      flash[:alert] = "您已取消收藏"
+    end
+    redirect_to product_path(@product)
+  end
+
 
   protected
 
