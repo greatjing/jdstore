@@ -72,10 +72,11 @@
                   <li>
                     <%= link_to("Admin 选单", admin_products_path ) %>
                   </li>
+                <% else %>
+                  <li>
+                   <%= link_to("个人订单列表", account_orders_path ) %>
+                  </li>
                 <% end %>
-               <li>
-                <%= link_to("个人订单列表", account_orders_path ) %>
-               </li>
                <li class="divider"> </li>
                <li>
                 <%= link_to("我的收藏", account_products_path ) %>
