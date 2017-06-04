@@ -178,6 +178,7 @@ body{
       background-repeat: no-repeat;//是否设置重复背景，不重复
       background-size: cover;//会保持图像本身的宽高比例，将图片缩放到正好完全覆盖定义背景的区域
       margin-bottom: 50px;//底部外边框50px
+      height: 700px;
 
       .box-inner {
           background-color: rgba(250, 250, 250, 0);//背景颜色以及透明度
