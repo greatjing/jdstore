@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :product_relationships
   has_many :relationship_products, :through => :product_relationships, :source => :product
 
+  has_many :like_products
+  has_many :good_products, :through => :like_products, :source => :product
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -28,6 +31,17 @@ class User < ApplicationRecord
 #取消收藏
   def quit!(product)
     relationship_products.delete(product)
+  end
+
+#判断是否喜欢过
+  def is_like?(product)
+    # binding.pry
+    good_products.include?(product)
+  end
+
+#喜欢产品
+  def like!(product)
+    good_products << product
   end
 
 end

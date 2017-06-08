@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :validate_search_key, only: [:search_word, :join, :quit]
+  before_action :validate_search_key, only: [:search_word, :join, :quit, :like_product]
 
   def index
     #收藏产品展示
-    
+
 
     #按照是否需要分类查找区分
     if params[:category].blank?
@@ -71,6 +71,17 @@ class ProductsController < ApplicationController
     redirect_to product_path(@product)
   end
 
+  #喜欢产品
+  def like
+    @product = Product.find(params[:id])
+    if current_user.is_like?(@product)
+      flash[:alert] = "您太喜欢这个车了，已经喜欢过了"
+    else
+      current_user.like!(@product)
+      flash[:notice] = "知道您喜欢这个车了"
+    end
+    redirect_to product_path(@product)
+  end
 
   protected
 

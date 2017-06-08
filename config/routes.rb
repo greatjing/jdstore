@@ -34,8 +34,11 @@ Rails.application.routes.draw do
     resources :comments
     member do
       post :add_to_cart
+      #收藏
       post :join
       post :quit
+      #喜欢产品
+      post :like
     end
     collection do
       #关键字查找

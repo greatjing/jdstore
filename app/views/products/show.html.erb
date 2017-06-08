@@ -20,12 +20,21 @@
         ¥<%= @product.price %> 元/天
         <p>
           <br>
+          <!-- 收藏按钮显示 -->
         <% if current_user && current_user.is_favorite?(@product) %>
           <%= link_to("取消收藏", quit_product_path(@product), method: :post, class: "btn btn-primary" ) %>
         <% else %>
           <%= link_to("收藏", join_product_path(@product), method: :post, class: "btn btn-success") %>
         <% end %>
-      </p>
+        <!-- 喜欢按钮显示 -->
+        <%# binding.pry %>
+        <% if current_user && current_user.is_like?(@product) %>
+          <!-- <img src="https://ooo.0o0.ooo/2017/06/08/5938f9e300828.jpeg" alt="喜欢"> -->
+          &nbsp&nbsp&nbsp&nbsp<font color="red">喜欢了，😍</font>
+        <% else %>
+          <%= link_to("喜欢我吗", like_product_path(@product), method: :post, class: "btn btn-primary" ) %>
+        <% end %>
+        </p>
 
       </div>
       <div class="pull-right add-cart-btn">

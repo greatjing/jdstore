@@ -7,5 +7,8 @@ class Product < ApplicationRecord
   has_many :product_relationships
   has_many :members, through: :product_relationships, source: :user
 
+  has_many :like_products
+  has_many :liker, through: :like_products, source: :user
+
 
 end
