@@ -27,7 +27,6 @@
           <%= link_to("收藏", join_product_path(@product), method: :post, class: "btn btn-success") %>
         <% end %>
         <!-- 喜欢按钮显示 -->
-        <%# binding.pry %>
         <% if current_user && current_user.is_like?(@product) %>
           <!-- <img src="https://ooo.0o0.ooo/2017/06/08/5938f9e300828.jpeg" alt="喜欢"> -->
           &nbsp&nbsp&nbsp&nbsp<font color="red">喜欢了，😍</font>
@@ -36,7 +35,7 @@
             你和<%= @product.liker_number %>个人一样喜欢这款车
           </p>
         <% else %>
-          <%= link_to("喜欢我吗", like_product_path(@product), method: :post, class: "btn btn-primary" ) %>
+          <%= link_to("喜欢我吗", like_product_path(@product), method: :post, class: "btn btn-primary")%>
         <% end %>
         </p>
 
