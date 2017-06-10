@@ -66,6 +66,9 @@ gem 'qiniu-rs'
 #密码管理
 gem 'figaro'
 
+#客服
+gem "intercom-rails"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 
