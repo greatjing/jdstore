@@ -163,11 +163,20 @@
         <% @products.each do |product| %>
           <div class="col-md-4 box-recommend-listitem">
             <div>
-              <%= link_to product_path(product) do %>
+              <!-- <%= link_to product_path(product) do %>
                 <% if product.image.present? %>
                   <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
                 <% else %>
                   <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+                <% end %>
+              <% end %> -->
+              <%= link_to product_path(product) do %>
+                <%# if product.image.present? %>
+                <% if product.photos.present? %>
+                  <%= image_tag(product.photos[0].image.thumb.url, class: "thumbnail") %>
+                  <%#= image_tag(product.image.thumb.url, class: "thumbnail") %>
+                <% else %>
+                  <%= image_tag("http://placehold.it/291x187&text=No Pic", class: "thumbnail") %>
                 <% end %>
               <% end %>
             </div>
