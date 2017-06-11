@@ -12,6 +12,10 @@ class Product < ApplicationRecord
   has_many :like_products
   has_many :liker, through: :like_products, source: :user
 
+  #多图
+  has_many :photos
+  accepts_nested_attributes_for :photos
+
   #产品被喜欢的次数
   def liker_number
     liker.length
