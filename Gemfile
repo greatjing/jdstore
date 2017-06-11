@@ -69,6 +69,12 @@ gem 'figaro'
 #客服
 gem "intercom-rails"
 
+#分享
+gem 'social-share-button'
+
+#优化分享内容 失败安装后，没有在config下新建文件
+#gem 'seo_helper'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 

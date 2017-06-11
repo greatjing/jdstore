@@ -55,6 +55,10 @@
           <%= link_to("喜欢我吗", like_product_path(@product), method: :post, class: "btn btn-primary")%>
         <% end %>
         </p>
+        
+        <br>
+        <!--分享 -->
+        <%= social_share_button_tag(@product.title, :allow_sites => %w(facebook twitter google_plus wechat weibo), :image => @product.photos[0].image.thumb.url , desc: @product.description) %>
 
       </div>
       <div class="pull-right add-cart-btn">
